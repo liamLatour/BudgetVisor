@@ -10,7 +10,7 @@
 
 	authStore.subscribe(async ({ isLoggedIn, user, firebaseControlled }) => {
 		if (isLoggedIn && firebaseControlled) {
-      const q = query(expensesCollection, where("owner", "==", user.uid));
+      const q = query(expensesCollection, where("owner", "==", user!.uid));
 
       getDocs(q)
       .then(querySnapshot => {

@@ -3,7 +3,7 @@ import type firebase from "firebase/auth"
 
 const authStore = writable<{
   isLoggedIn: boolean;
-  user?: firebase.User;
+  user?: firebase.User|null;
   firebaseControlled: boolean;
 }>({
   isLoggedIn: false,

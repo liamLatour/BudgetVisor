@@ -11,7 +11,7 @@
 	};
 
 	async function add_expense(){
-		await addDoc(expensesCollection, {...expense, owner: auth.currentUser.uid, timestamp: serverTimestamp()});
+		await addDoc(expensesCollection, {...expense, owner: auth.currentUser!.uid, timestamp: serverTimestamp()});
 		alert("Done !");
 	}
 </script>

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { signInWithEmailAndPassword } from 'firebase/auth';
   import { auth, userDoc } from '../../../firebase';
   import { setDoc } from 'firebase/firestore/lite';
@@ -12,11 +12,14 @@
   async function signIn() {
     try {
       let user = await signInWithEmailAndPassword(auth, email, password)
-      await setDoc(userDoc(auth.currentUser.uid), { username: user.user.displayName, email: user.user.email })
+      await setDoc(userDoc(auth.currentUser!.uid), { username: user.user.displayName, email: user.user.email })
       await goto("/")
     } catch (error) {
-      console.log("error signin in", error.message)
-      errors = error.message
+      let message = 'Unknown Error'
+      if (error instanceof Error) message = error.message
+
+      console.log("error signin in", message)
+      errors = message
     }
   }
 </script>

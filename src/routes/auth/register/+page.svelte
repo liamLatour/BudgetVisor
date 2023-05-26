@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
   import { auth, userDoc } from '../../../firebase';
   import { setDoc } from 'firebase/firestore/lite';
@@ -18,7 +18,7 @@
         password
       );
       await updateProfile(user.user, { displayName: username });
-      await setDoc(userDoc(auth.currentUser.uid), {
+      await setDoc(userDoc(auth.currentUser!.uid), {
         username: user.user.displayName,
         email: user.user.email
       });

@@ -6,7 +6,7 @@ import { collection, doc, getFirestore } from "firebase/firestore/lite";
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 let db = getFirestore(app);
-const userDoc = (userId) => doc(db, "users", userId)
+const userDoc = (userId: string) => doc(db, "users", userId);
 
 const expensesCollection = collection(db, "expenses");
 

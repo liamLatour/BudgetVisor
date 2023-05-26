@@ -1,4 +1,4 @@
-<script >
+<script lang="ts">
 	import Navbar from '../components/Navbar.svelte';
 	import './styles.css';
 	import { onAuthStateChanged } from 'firebase/auth';
